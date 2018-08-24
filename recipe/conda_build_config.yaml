@@ -157,8 +157,6 @@ pin_run_as_build:
     max_pin: x.x.x
   icu:
     max_pin: x
-  isl:
-    max_pin: x.x
   jasper:
     max_pin: x
   jpeg:
@@ -344,8 +342,6 @@ hdf5:
   - 1.10.2
 icu:
   - 58
-isl:
-  - 0.19
 jasper:
   - 1.900.1
 jpeg:
