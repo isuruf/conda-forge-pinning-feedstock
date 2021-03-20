@@ -1,0 +1,49 @@
+migrator_ts: 1611736741
+__migrator:
+  kind:
+    version
+  migration_number:
+    1
+  build_number:
+    1
+  operation: key_add
+  # conda-forge support for cuda 9.2 is minimal and will completely drop
+  # support in the future. If you keep `use_local: false`, then cuda 9.2
+  # support will be dropped from this feedstock once that happens.
+  #
+  # If you change it to `use_local: true`, the feedstock will keep on building
+  # for cuda 9.2 indefinitely even after conda-forge has dropped support.
+  # Another disadvantage is that this migrator might have to be updated for
+  # new zip_keys entries if you use `use_local: true`
+  use_local: false
+  override_cbc_keys:
+    - cuda_compiler_stub
+  check_solvable: false
+  primary_key: cuda_compiler_version
+  paused: true
+
+cuda_compiler_version:         # [linux64 or win]
+  - 9.2                        # [linux64]
+  - 10.0                       # [linux64 or win]
+  - 10.1                       # [linux64 or win]
+
+cudnn:                  # [linux64 or win]
+  - 7                   # [linux64]
+  - 7                   # [linux64 or win]
+  - 7                   # [linux64 or win]
+
+cdt_name:  # [linux]
+  - cos6   # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos6"]
+  - cos6   # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos6"]
+  - cos6   # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos6"]
+  - cos7   # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos7"]
+  - cos7   # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos7"]
+  - cos7   # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos7"]
+
+docker_image:                                   # [os.environ.get("BUILD_PLATFORM", "").startswith("linux-")]
+  - quay.io/condaforge/linux-anvil-cuda:9.2     # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos6"]
+  - quay.io/condaforge/linux-anvil-cuda:10.0    # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos6"]
+  - quay.io/condaforge/linux-anvil-cuda:10.1    # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos6"]
+  - quay.io/condaforge/linux-anvil-cos7-cuda:9.2     # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos7"]
+  - quay.io/condaforge/linux-anvil-cos7-cuda:10.0    # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos7"]
+  - quay.io/condaforge/linux-anvil-cos7-cuda:10.1    # [linux64 and os.environ.get("DEFAULT_LINUX_VERSION", "cos6") == "cos7"]
