@@ -87,3 +87,4 @@ libgfortran-ng = """\
         - {{ compiler("fortran") }}
     ```"""
 openmp = "The `openmp` output has been superseded by `llvm-openmp`."
+libpython = "`libpython` has been superceded by `distutils-activate-mingw`."
